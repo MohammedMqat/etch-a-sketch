@@ -52,11 +52,12 @@ function createCanvas(cellSize) {
     element.style.backgroundColor = getColorFromMode(chosenMode);
   }
 
-  for (let i = 1; i < cellSize ** 2; i++) {
+  for (let i = 0; i < cellSize ** 2; i++) {
     const cellDiv = document.createElement("div");
     cellDiv.classList.add("cell");
-    cellDiv.style.width = singleCellWidth - 2 + "px"; // the -2 are to account for border style, 1px from each side, 2 on x axis, 2 on y-axis
-    cellDiv.style.height = singleCellHeight - 2 + "px";
+    cellDiv.style.boxSizing = "border-box";
+    cellDiv.style.width = singleCellWidth + "px";
+    cellDiv.style.height = singleCellHeight + "px";
     container.appendChild(cellDiv);
     cellDiv.addEventListener("mouseover", changeCellColor);
   }
