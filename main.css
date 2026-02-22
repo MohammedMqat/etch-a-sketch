@@ -92,21 +92,16 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  width: 900px;
+  width: 50vh;
   height: 50vh;
-  margin: 20px auto;
-  border: 1px solid black;
-  overflow: hidden;
+  margin: auto;
   gap: 0;
+  box-sizing: border-box;
 }
 
 .cell {
-  width: 10px;
-  height: 10px;
   border: 1px solid #333;
-  margin: auto;
 }
-
 footer {
   text-align: center;
   margin-top: 40px;
