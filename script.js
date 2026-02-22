@@ -41,10 +41,8 @@ function createCanvas(cellSize) {
     );
   }
 
-  const containerWidth = container.clientWidth;
-  const containerHeight = container.clientHeight;
-  const singleCellHeight = containerHeight / cellSize;
-  const singleCellWidth = containerWidth / cellSize;
+  container.style.gridTemplateColumns = `repeat(${cellSize}, 1fr)`;
+  container.style.gridTemplateRows = `repeat(${cellSize}, 1fr)`;
 
   function changeCellColor(event) {
     const element = event.target;
@@ -55,9 +53,6 @@ function createCanvas(cellSize) {
   for (let i = 0; i < cellSize ** 2; i++) {
     const cellDiv = document.createElement("div");
     cellDiv.classList.add("cell");
-    cellDiv.style.boxSizing = "border-box";
-    cellDiv.style.width = singleCellWidth + "px";
-    cellDiv.style.height = singleCellHeight + "px";
     container.appendChild(cellDiv);
     cellDiv.addEventListener("mouseover", changeCellColor);
   }
