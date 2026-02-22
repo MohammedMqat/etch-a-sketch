@@ -3,7 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>etch-a-sketch</title>
+    <title>Etch A Sketch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="main.css" />
   </head>
 
@@ -14,35 +20,44 @@
         <h1>Etch A Sketch</h1>
         <span class="screen-text">Screen</span>
       </div>
-      <div id="container"></div>
-      <div class="buttons">
-        <button id="blackbtn" type="button" onclick="changeColorMode('black')">
-          black
-        </button>
-        <button id="graybtn" type="button" onclick="changeColorMode('gray')">
-          gray
-        </button>
-        <button
-          id="rainbowbtn"
-          type="button"
-          onclick="changeColorMode('rainbow')"
-        >
-          rainbow
-        </button>
-        <button id="erasebtn" type="button" onclick="changeColorMode('erase')">
-          erase
-        </button>
-        <button id="resetbtn" type="button" onclick="reset()">reset</button>
+
+      <div id="screen-frame">
+        <div id="cell-container" class="cell-container"></div>
       </div>
-      <div class="resize-section">
-        <input id="resizebtn" type="text" placeholder="Set Size: 2 - 100" />
-        <button id="resize-btn">Resize</button>
+
+      <div class="controls">
+        <div class="buttons">
+          <button id="blackbtn" class="active" type="button" onclick="changeColorMode('black')">
+            Black
+          </button>
+          <button id="graybtn" type="button" onclick="changeColorMode('gray')">
+            Gray
+          </button>
+          <button id="rainbowbtn" type="button" onclick="changeColorMode('rainbow')">
+            Rainbow
+          </button>
+          <button id="erasebtn" type="button" onclick="changeColorMode('erase')">
+            Erase
+          </button>
+          <button id="resetbtn" type="button" onclick="reset()">Reset</button>
+        </div>
+
+        <div class="resize-section">
+          <input id="resizebtn" type="text" placeholder="Grid size (2–100)" />
+          <button id="resize-btn">Resize</button>
+        </div>
+      </div>
+
+      <div class="knobs">
+        <div class="knob knob-left"></div>
+        <div class="knob knob-right"></div>
       </div>
     </div>
-    <div id="cell-container" class="cell-container"></div>
-    <script src="script.js"></script>
+
     <footer>
       <p id="Sign">built by Mohammed Mqat</p>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>

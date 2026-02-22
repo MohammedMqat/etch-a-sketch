@@ -6,6 +6,13 @@ function changeColorMode(mode) {
   else if (mode === "rainbow") chosenMode = "rainbow";
   else if (mode === "erase") chosenMode = "erase";
   else throw new Error("chosen mode is not supported");
+
+  document.querySelectorAll(".buttons button").forEach(function (btn) {
+    btn.classList.remove("active");
+  });
+  var btnId = mode + "btn";
+  var activeBtn = document.getElementById(btnId);
+  if (activeBtn) activeBtn.classList.add("active");
 }
 
 function getRandomColor() {
@@ -68,9 +75,8 @@ resizeButton.addEventListener("click", function () {
   createCanvas(newCanvasSize);
 });
 
-const resetCanvas = document.getElementById("resetbtn");
-resetbtn.addEventListener("click", function () {
+function reset() {
   container.innerHTML = "";
   createCanvas(currentCellSize);
-});
+}
 createCanvas(currentCellSize);
