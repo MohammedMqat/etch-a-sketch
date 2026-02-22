@@ -8,23 +8,38 @@
   </head>
 
   <body>
-    <div id="header">
-      <h1>etch a sketch</h1>
-      <h3>magic</h3>
-      <h3>screen</h3>
+    <div id="etch-container">
+      <div id="title-bar">
+        <span class="magic">Magic</span>
+        <h1>Etch A Sketch</h1>
+        <span class="screen-text">Screen</span>
+      </div>
+      <div id="container"></div>
+      <div class="buttons">
+        <button id="blackbtn" type="button" onclick="changeColorMode('black')">
+          black
+        </button>
+        <button id="graybtn" type="button" onclick="changeColorMode('gray')">
+          gray
+        </button>
+        <button
+          id="rainbowbtn"
+          type="button"
+          onclick="changeColorMode('rainbow')"
+        >
+          rainbow
+        </button>
+        <button id="erasebtn" type="button" onclick="changeColorMode('erase')">
+          erase
+        </button>
+        <button id="resetbtn" type="button" onclick="reset()">reset</button>
+      </div>
+      <div class="resize-section">
+        <input id="resizebtn" type="text" placeholder="Set Size: 2 - 100" />
+        <button id="resize-btn">Resize</button>
+      </div>
     </div>
-    <div class="Box">
-      <button type="button">black</button>
-      <button type="button">gray</button>
-      <button type="button">rainbow</button>
-      <button type="button">erase</button>
-      <button type="button">reset</button>
-      <button type="button">resize</button>
-      <input type="text" placeholder="Set Size: 2-100" id="setsize" />
-    </div>
-    <div class="container" id="container">
-      <div id="cell"></div>
-    </div>
+    <div id="cell-container" class="cell-container"></div>
     <script src="script.js"></script>
     <footer>
       <p id="Sign">built by Mohammed Mqat</p>

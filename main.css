@@ -1,19 +1,119 @@
 body {
   background-color: aqua;
+  font-family: Arial, sans-serif;
 }
+
+#etch-container {
+  background-color: red;
+  border-radius: 15px;
+  width: 800px;
+  text-align: center;
+  padding: 20px;
+  margin: 40px auto;
+  color: yellow;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+#title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.magic {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.screen-text {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
 .container {
-  height: 600px;
-  width: 600px;
+  background-color: rgb(20, 54, 29);
+  height: 400px;
+  margin: 20px auto;
+  border: 5px solid gray;
+}
+
+.buttons {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
+}
+
+.buttons button {
+  background-color: yellow;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttons button:hover {
+  background-color: orange;
+}
+
+.resize-section {
+  margin-top: 20px;
+}
+
+.resize-section input {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  width: 60px;
+  margin-right: 10px;
+}
+
+.resize-section button {
+  background-color: yellow;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.resize-section button:hover {
+  background-color: orange;
+}
+
+.cell-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 900px;
+  height: 50vh;
+  margin: 20px auto;
+  border: 1px solid black;
+  overflow: hidden;
+  gap: 0;
 }
 
 .cell {
-  background: #c925a0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 10px;
+  height: 10px;
   border: 1px solid #333;
-  width: 15px;
-  height: 40px;
+  margin: auto;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+#Sign {
+  color: rgb(255, 0, 0);
+  font-size: 20px;
 }

@@ -1,25 +1,80 @@
-const container = document.getElementById("container");
-console.log(container);
-
-const cellSize = 90;
-
-if (!Number.isInteger(cellSize)) {
-  throw new Error("Cellsize is not integer");
+// COLOR UTILITES
+let chosenMode = "black";
+function changeColorMode(mode) {
+  if (mode === "black") chosenMode = "black";
+  else if (mode === "gray") chosenMode = "gray";
+  else if (mode === "rainbow") chosenMode = "rainbow";
+  else if (mode === "erase") chosenMode = "erase";
+  else throw new Error("chosen mode is not supported");
 }
 
-if (cellSize > 100 || cellSize < 2) {
-  throw new Error(
-    "Cellsize must be between 2 and 100, its currently: " + cellSize
-  );
+function getRandomColor() {
+  const r = Math.random() * 255;
+  const g = Math.random() * 255;
+  const b = Math.random() * 255;
+
+  return `rgb(${r},${g},${b})`;
 }
 
-for (let i = 0; i < cellSize; i++) {
-  const cellDiv = document.createElement("div");
-  // cellDiv.textContent = "Cell";
-  cellDiv.classList.add("cell");
-  container.appendChild(cellDiv);
+function getColorFromMode(mode) {
+  switch (mode) {
+    case "black":
+      return "black";
+    case "gray":
+      return "gray";
+    case "rainbow":
+      return getRandomColor();
+    case "erase":
+      return "";
+  }
 }
 
-// get dimensions of container 600 * 600
-// calculate the width of each cell for all of them to fit perfectly in the container
-// modify .cell class to be that width and height
+const container = document.getElementById("cell-container");
+function createCanvas(cellSize) {
+  if (!Number.isInteger(cellSize)) {
+    throw new Error("Cellsize is not integer");
+  }
+
+  if (cellSize > 100 || cellSize < 2) {
+    throw new Error(
+      "Cellsize must be between 2 and 100, its currently: " + cellSize
+    );
+  }
+
+  const containerWidth = container.clientWidth;
+  const containerHeight = container.clientHeight;
+  const singleCellHeight = containerHeight / cellSize;
+  const singleCellWidth = containerWidth / cellSize;
+
+  function changeCellColor(event) {
+    const element = event.target;
+
+    element.style.backgroundColor = getColorFromMode(chosenMode);
+  }
+
+  for (let i = 1; i < cellSize ** 2; i++) {
+    const cellDiv = document.createElement("div");
+    cellDiv.classList.add("cell");
+    cellDiv.style.width = singleCellWidth - 2 + "px"; // the -2 are to account for border style, 1px from each side, 2 on x axis, 2 on y-axis
+    cellDiv.style.height = singleCellHeight - 2 + "px";
+    container.appendChild(cellDiv);
+    cellDiv.addEventListener("mouseover", changeCellColor);
+  }
+}
+let currentCellSize = 10;
+
+const resizeButton = document.getElementById("resize-btn");
+resizeButton.addEventListener("click", function () {
+  const resizeInput = document.getElementById("resizebtn");
+  const newCanvasSize = parseInt(resizeInput.value);
+  currentCellSize = newCanvasSize;
+  container.innerHTML = "";
+  createCanvas(newCanvasSize);
+});
+
+const resetCanvas = document.getElementById("resetbtn");
+resetbtn.addEventListener("click", function () {
+  container.innerHTML = "";
+  createCanvas(currentCellSize);
+});
+createCanvas(currentCellSize);
